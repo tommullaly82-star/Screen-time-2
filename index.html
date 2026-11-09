@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Screen Time">
+<meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Screen Time mockup</title>
+<style>
+:root{--bg:#F2F2F7;--card:#fff;--lb:#000;--lb2:rgba(60,60,67,.6);--sep:rgba(60,60,67,.2);--bl:#007AFF;--fill:rgba(118,118,128,.12);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--card:#1C1C1E;--lb:#fff;--lb2:rgba(235,235,245,.6);--sep:rgba(84,84,88,.65);--bl:#0A84FF;--fill:rgba(118,118,128,.24);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--card:#1C1C1E;--lb:#fff;--lb2:rgba(235,235,245,.6);--sep:rgba(84,84,88,.65);--bl:#0A84FF;--fill:rgba(118,118,128,.24);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--lb);font:17px/1.3 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:430px;margin:0 auto;padding:0 16px 48px}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:44px}
+.back{color:var(--bl)}
+h1{font-size:17px;font-weight:600;margin:0;user-select:none;touch-action:manipulation}
+.card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:16px}
+.datebar{display:flex;justify-content:space-between;align-items:center;font-weight:600;margin-bottom:12px}
+.datebar button{background:none;border:0;color:var(--bl);font-size:28px;line-height:1;padding:0 8px;cursor:pointer}
+.datebar button:disabled{opacity:.3;cursor:default}
+.eyebrow{font-size:12px;font-weight:600;color:var(--lb2);text-transform:uppercase;letter-spacing:.02em}
+.big{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.delta{font-size:13px;color:var(--lb2);min-height:18px;margin-bottom:8px}
+svg{width:100%;height:auto;display:block;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+svg.edit{touch-action:none}
+.ax{font-size:11px;fill:var(--lb2)}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin-top:14px;font-size:13px}
+.legend div{display:flex;align-items:center;gap:6px}
+.legend i{width:8px;height:8px;border-radius:50%;flex:none}
+.legend b{margin-left:auto;font-weight:600}
+h2{font-size:20px;font-weight:700;margin:0 0 8px}
+.app{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:.5px solid var(--sep)}
+.app.f{border-top:0}
+.ic{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;flex:none}
+.mid{flex:1;min-width:0}
+.nm{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:4px;border-radius:2px;background:var(--fill);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--bl);border-radius:2px}
+.tm{font-size:15px;color:var(--lb2);font-variant-numeric:tabular-nums}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two .card{margin:0 0 16px}
+.stat b{display:block;font-size:28px;letter-spacing:-.02em;line-height:1.2}
+.stat span{font-size:13px;color:var(--lb2)}
+.controls{font-size:14px}
+.controls h3{font-size:15px;margin:18px 0 8px}
+.controls input,.controls select{font:inherit;background:var(--fill);color:var(--lb);border:0;border-radius:8px;padding:7px 8px;width:100%;min-width:0;box-sizing:border-box}
+.controls input[type=checkbox]{width:auto}
+table.grid{width:100%;border-collapse:collapse;font-size:13px}
+.grid th{text-align:left;font-weight:600;color:var(--lb2);padding:3px 2px}
+.grid td{padding:3px 2px}
+.arow{display:grid;grid-template-columns:1.4fr .8fr 1.1fr;gap:6px;margin-bottom:6px}
+.nrow{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.nrow label{display:block;color:var(--lb2);font-size:12px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill,.tg{background:var(--fill);color:var(--bl);border:0;border-radius:10px;padding:9px 12px;font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.note{color:var(--lb2);font-size:12px;margin-top:12px}
+:focus-visible{outline:2px solid var(--bl);outline-offset:2px}
+body.clean .controls{display:none}
+.sb{display:flex;justify-content:space-between;align-items:center;height:48px;padding:0 6px 0 14px;font-weight:600;font-size:17px;font-variant-numeric:tabular-nums}
+.sb .r{display:flex;align-items:center;gap:6px}
+.sa .sb,.nosb .sb{display:none}
+.seg{display:flex;background:var(--fill);border-radius:9px;padding:2px;margin-bottom:14px}
+.seg button{flex:1;border:0;background:none;color:var(--lb);font:inherit;font-size:13px;font-weight:500;padding:6px 0;border-radius:7px;cursor:pointer}
+.seg .on{background:var(--card);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg .on{background:#636366}}
+:root[data-theme="dark"] .seg .on{background:#636366}
+.back{touch-action:manipulation;user-select:none;-webkit-user-select:none}
+[hidden]{display:none!important}
+.ov{position:fixed;inset:0;z-index:9;background:var(--bg);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 20px) 16px 40px}
+.ov .in{max-width:760px;margin:0 auto}
+.ov pre{background:var(--card);border-radius:12px;padding:14px;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto;max-height:60vh;white-space:pre}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="sb" id="sb"><span id="clk">9:41</span><span class="r">
+    <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1.5 4.2a10 10 0 0 1 14 0"/><path d="M4.2 7a6 6 0 0 1 8.6 0"/><circle cx="8.5" cy="10.3" r="1" fill="currentColor" stroke="none"/></svg>
+    <svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="22" height="12" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect id="bat" x="2" y="2" width="19" height="9" rx="2" fill="currentColor"/><path d="M24 4.5v4c1-.3 1.8-1.1 1.8-2s-.8-1.7-1.8-2z" fill="currentColor" opacity=".45"/></svg>
+  </span></div>
+  <header class="nav"><span class="back">‹ Settings</span><h1 id="ttl">Screen Time</h1><span></span></header>
+  <div class="seg"><button id="s0" class="on">Week</button><button id="s1">Day</button></div>
+
+  <section class="card">
+    <div class="datebar"><button id="prev" aria-label="Previous week">‹</button><span id="range"></span><button id="next" aria-label="Next week">›</button></div>
+    <div class="eyebrow" id="lbl">Daily Average</div>
+    <div class="big" id="big"></div>
+    <div class="delta" id="delta"></div>
+    <svg id="svg" viewBox="0 0 340 182" role="img" aria-label="Screen time by day"></svg>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="card">
+    <h2>Most Used</h2>
+    <div id="apps"></div>
+  </section>
+
+  <div class="two">
+    <section class="card stat"><div class="eyebrow">Pickups</div><b id="pk"></b><span>daily average</span></section>
+    <section class="card stat"><div class="eyebrow">Notifications</div><b id="nt"></b><span>daily average</span></section>
+  </div>
+
+  <section class="card controls" id="ctl"></section>
+</div>
+<div class="ov" id="ov" hidden><div class="in"><h2>Gotcha. It’s a mockup, and this is the code behind it.</h2><pre id="src"></pre><div class="btns"><button class="pill" id="cpy">Copy code</button><button class="pill" id="cls">Close</button></div></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sum=a=>a.reduce((x,y)=>x+y,0);
+const fmt=m=>{m=Math.round(m);const h=Math.floor(m/60),r=m%60;return h?(r?h+'h '+r+'m':h+'h'):r+'m'};
+const CATS=[['Social','#0A84FF'],['Entertainment','#64D2FF'],['Productivity','#FF9F0A'],['Other','#8E8E93']];
+const SHORT=['Social','Entert.','Produc.','Other'];
+const DN=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],DL=['M','T','W','T','F','S','S'];
+const DEF=()=>({weeks:[
+{days:[[105,75,70,38],[90,82,95,30],[125,85,66,42],[98,70,88,36],[115,95,58,48],[150,132,42,55],[170,145,35,52]],
+ apps:[{n:'Instagram',m:700,c:0},{n:'YouTube',m:560,c:1},{n:'Safari',m:410,c:2},{n:'Messages',m:330,c:0},{n:'Netflix',m:290,c:1}],pk:78,nt:142,delta:null},
+{days:[[110,80,60,40],[95,70,85,35],[130,90,70,45],[100,65,90,40],[120,100,55,50],[160,140,40,60],[180,150,30,55]],
+ apps:[{n:'Instagram',m:760,c:0},{n:'YouTube',m:610,c:1},{n:'Safari',m:380,c:2},{n:'Messages',m:350,c:0},{n:'Netflix',m:320,c:1}],pk:85,nt:160,delta:6}
+]});
+function load(){try{const j=JSON.parse(localStorage.getItem('stui'));if(j&&j.weeks&&j.weeks.length===2&&j.weeks[0].days.length===7)return j}catch(e){}return null}
+function save(){try{localStorage.setItem('stui',JSON.stringify(S))}catch(e){}}
+let S=load()||DEF(),v=0,sel=-1,editOn=false,fix=null,curMax=360,dr=null,mode='week',dsel=0;
+S.ui=Object.assign({sb:true,live:true,time:'9:41',bat:78,hideF:true},S.ui);
+const SA=!!(navigator.standalone||matchMedia('(display-mode: standalone)').matches);
+const tod=()=>(new Date().getDay()+6)%7,lastIdx=()=>S.ui.hideF?tod():6,nd=()=>v===0&&S.ui.hideF?tod()+1:7;
+const rnd=x=>{x=Math.sin(x*12.9898)*43758.5453;return x-Math.floor(x)},g=(h,c,s)=>Math.exp(-((h-c)**2)/(2*s*s));
+const PROF=[h=>.5*g(h,8,1.5)+.4*g(h,13,2)+g(h,21,2.2),h=>.3*g(h,12.5,1.5)+g(h,21.5,2.4),h=>g(h,10.5,2)+.9*g(h,15,2.5),h=>.6*g(h,9,2)+.6*g(h,18,3)+.2];
+function hours(d,s){return CATS.map((_,k)=>{const w=Array.from({length:24},(_,h)=>PROF[k](h)*(.75+.5*rnd(s*97+k*31+h))),t=sum(w);return w.map(x=>d[k]*x/t)})}
+const svg=$('svg'),base=152,top=10,H=base-top,slot=296/7,bw=26;
+
+function monday(off){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7)-7*off);return d}
+function rangeTxt(off){const a=monday(off),b=new Date(a);b.setDate(b.getDate()+6);const mo=x=>x.toLocaleString('en-GB',{month:'long'});
+  return a.getMonth()===b.getMonth()?a.getDate()+'–'+b.getDate()+' '+mo(b):a.getDate()+' '+mo(a)+' – '+b.getDate()+' '+mo(b)}
+
+function render(){
+  const W=S.weeks[v],T=W.days.map(sum),n=nd(),avg=sum(T.slice(0,n))/n;
+  if(sel>=n)sel=-1;
+  $('s0').classList.toggle('on',mode==='week');$('s1').classList.toggle('on',mode==='day');
+  $('range').textContent=rangeTxt(v);
+  $('prev').disabled=v===1;$('next').disabled=v===0;
+  $('lbl').textContent=sel>=0?DN[sel]:'Daily Average';
+  $('big').textContent=fmt(sel>=0?T[sel]:avg);
+  let dt='';
+  if(sel<0){const a1=sum(S.weeks[1].days.map(sum))/7;const p=v===0?Math.round((avg-a1)/a1*100):W.delta;
+    if(p!=null&&isFinite(p))dt=(p>=0?'↑ ':'↓ ')+Math.abs(p)+'% from '+(v===0?'last':'previous')+' week'}
+  $('delta').textContent=dt;
+
+  const yMax=fix||Math.ceil(Math.max(...T.slice(0,n),avg,60)*1.05/120)*120;curMax=yMax;const sc=H/yMax;
+  let s=`<defs><clipPath id="cp"><rect x="0" y="0" width="296" height="${base}"/></clipPath></defs>`;
+  [0,.5,1].forEach(f=>{const y=base-H*f;
+    s+=`<line x1="0" x2="296" y1="${y}" y2="${y}" stroke="var(--sep)" stroke-width=".7"${f?' stroke-dasharray="1 3" stroke-linecap="round"':''}/><text x="304" y="${y+3.5}" class="ax">${f?fmt(yMax*f):'0'}</text>`});
+  s+='<g clip-path="url(#cp)">';
+  W.days.forEach((d,i)=>{if(i>=n)return;const x=i*slot+(slot-bw)/2;let c=0;const cum=d.map(m=>c+=m);
+    for(let k=3;k>=0;k--){const h=cum[k]*sc;if(h>0)s+=`<rect x="${x}" y="${base-h}" width="${bw}" height="${h+4}" rx="3.5" fill="${CATS[k][1]}" opacity="${sel<0||sel===i?1:.35}"/>`}});
+  s+='</g>';
+  const ay=base-avg*sc;
+  s+=`<line x1="0" x2="296" y1="${ay}" y2="${ay}" stroke="var(--bl)" stroke-width="1" stroke-dasharray="4 3" opacity=".9"/><text x="304" y="${ay+3.5}" class="ax" style="fill:var(--bl)">avg</text>`;
+  W.days.forEach((d,i)=>{const x=i*slot+(slot-bw)/2;
+    s+=`<text x="${x+bw/2}" y="172" text-anchor="middle" class="ax"${sel===i?' style="font-weight:700;fill:var(--lb)"':''}>${DL[i]}</text>`;
+    if(i<n)s+=`<rect data-i="${i}" x="${i*slot}" y="0" width="${slot}" height="${base+26}" fill="transparent" style="cursor:pointer"/>`});
+  svg.innerHTML=s;
+
+  $('legend').innerHTML=CATS.map((c,k)=>{const val=sel>=0?W.days[sel][k]:sum(W.days.map(d=>d[k]))/7;
+    return `<div><i style="background:${c[1]}"></i><span>${c[0]}</span><b>${fmt(val)}</b></div>`}).join('');
+
+  const mx=Math.max(1,...W.apps.map(a=>a.m));
+  $('apps').innerHTML=W.apps.map((a,i)=>`<div class="app${i?'':' f'}"><span class="ic" style="background:${CATS[a.c][1]}">${esc((a.n||'?')[0])}</span><div class="mid"><div class="nm">${esc(a.n)}</div><div class="bar"><i style="width:${a.m/mx*100}%"></i></div></div><span class="tm">${fmt(a.m)}</span></div>`).join('');
+  $('pk').textContent=W.pk;$('nt').textContent=W.nt;
+  if(mode==='day')dayView(W,T);
+}
+
+function dayView(W,T){
+  const i=dsel,t=tod(),d=monday(v);d.setDate(d.getDate()+i);
+  $('range').textContent=v===0&&i===t?'Today':v===0&&i===t-1?'Yesterday':d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
+  $('prev').disabled=v===1&&i===0;$('next').disabled=v===0&&i>=lastIdx();
+  $('lbl').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long'});
+  $('big').textContent=fmt(T[i]);
+  const o=sum(S.weeks[1].days[i]),p=Math.round((T[i]-o)/o*100);
+  $('delta').textContent=v===0&&isFinite(p)?(p>=0?'↑ ':'↓ ')+Math.abs(p)+'% from last '+DN[i]:'';
+  const hv=hours(W.days[i],i+7*v),sc=H/60,sl=296/24,b=8;
+  let s=`<defs><clipPath id="cp"><rect x="0" y="0" width="296" height="${base}"/></clipPath></defs>`;
+  [0,.5,1].forEach(f=>{const y=base-H*f;
+    s+=`<line x1="0" x2="296" y1="${y}" y2="${y}" stroke="var(--sep)" stroke-width=".7"${f?' stroke-dasharray="1 3" stroke-linecap="round"':''}/><text x="304" y="${y+3.5}" class="ax">${f?Math.round(60*f)+'m':'0'}</text>`});
+  s+='<g clip-path="url(#cp)">';
+  for(let h=0;h<24;h++){let c=0;const cum=hv.map(a=>c+=a[h]),k0=Math.min(1,60/Math.max(c,1)),x=h*sl+(sl-b)/2;
+    for(let k=3;k>=0;k--){const ht=cum[k]*k0*sc;if(ht>.3)s+=`<rect x="${x}" y="${base-ht}" width="${b}" height="${ht+4}" rx="2" fill="${CATS[k][1]}"/>`}}
+  s+='</g>';
+  [0,6,12,18].forEach(h=>s+=`<text x="${h*sl+sl/2}" y="172" text-anchor="middle" class="ax">${String(h).padStart(2,'0')}</text>`);
+  svg.innerHTML=s;
+  $('legend').innerHTML=CATS.map((c,k)=>`<div><i style="background:${c[1]}"></i><span>${c[0]}</span><b>${fmt(W.days[i][k])}</b></div>`).join('');
+}
+
+function setDay(i,nt){const W=S.weeks[v],d=W.days[i],old=sum(d);
+  W.days[i]=old===0?[.5,.25,.15,.1].map(f=>Math.round(nt*f)):d.map(m=>Math.round(m*nt/old))}
+function syncInputs(){document.querySelectorAll('[data-d]').forEach(n=>{if(n!==document.activeElement)n.value=S.weeks[v].days[n.dataset.d][n.dataset.k]})}
+
+svg.addEventListener('pointerdown',e=>{const i=e.target.dataset.i;if(i===undefined)return;
+  dr={i:+i,y0:e.clientY,moved:false,max:curMax};if(editOn)svg.setPointerCapture(e.pointerId)});
+svg.addEventListener('pointermove',e=>{if(!dr||!editOn)return;
+  if(Math.abs(e.clientY-dr.y0)>3)dr.moved=true;if(!dr.moved)return;
+  const r=svg.getBoundingClientRect(),y=(e.clientY-r.top)*182/r.height,sc=H/dr.max;
+  let nt=Math.max(0,Math.min(dr.max,(base-y)/sc));nt=Math.round(nt/5)*5;
+  setDay(dr.i,nt);fix=dr.max;render();syncInputs()});
+function endDrag(tap){if(dr&&tap&&!dr.moved)sel=sel===dr.i?-1:dr.i;fix=null;dr=null;save();render();syncInputs()}
+svg.addEventListener('pointerup',()=>{if(dr)endDrag(true)});
+svg.addEventListener('pointercancel',()=>{if(dr)endDrag(false)});
+
+$('prev').onclick=()=>{if(mode==='day'){if(dsel>0)dsel--;else if(v===0){v=1;dsel=6;buildCtl()}}else{v=1;sel=-1;buildCtl()}render()};
+$('next').onclick=()=>{if(mode==='day'){if(v===1&&dsel===6){v=0;dsel=0;buildCtl()}else if(dsel<(v===0?lastIdx():6))dsel++}else{v=0;sel=-1;buildCtl()}render()};
+$('s0').onclick=()=>{mode='week';sel=-1;render()};
+$('s1').onclick=()=>{if(mode==='day')return;dsel=sel>=0?sel:(v===0?lastIdx():6);mode='day';render()};
+function tick(){const U=S.ui;$('clk').textContent=U.live?new Date().toLocaleTimeString('en-GB',{hour:'numeric',minute:'2-digit',hour12:false}):U.time;$('bat').setAttribute('width',19*Math.min(100,Math.max(1,U.bat))/100)}
+function applyUI(){document.body.classList.toggle('nosb',!S.ui.sb);tick()}
+setInterval(tick,15000);
+function showCode(){$('ov').hidden=false;$('src').textContent='Loading…';
+  fetch(location.href).then(r=>r.text()).catch(()=>'<!DOCTYPE html>\n'+document.documentElement.outerHTML).then(t=>{$('src').textContent=t})}
+$('cls').onclick=()=>{$('ov').hidden=true};
+$('cpy').onclick=()=>{try{navigator.clipboard.writeText($('src').textContent)}catch(e){}};
+let bt=0,bto;document.querySelector('.back').addEventListener('click',()=>{bt++;clearTimeout(bto);bto=setTimeout(()=>{bt=0},2000);if(bt>=5){bt=0;showCode()}});
+$('ttl').addEventListener('dblclick',()=>document.body.classList.toggle('clean'));
+
+function buildCtl(){const W=S.weeks[v];
+  $('ctl').innerHTML=`<h2>Edit data</h2>
+  <div class="btns" style="margin-top:0"><label class="tg"><input type="checkbox" id="ed"${editOn?' checked':''}> Drag bars to edit</label><button class="pill" data-act="clean">Clean view</button></div>
+  <h3>Display</h3>
+  <div class="btns" style="margin-top:0"><label class="tg"><input type="checkbox" data-u="sb"${S.ui.sb?' checked':''}> Status bar</label><label class="tg"><input type="checkbox" data-u="live"${S.ui.live?' checked':''}> Live clock</label><label class="tg"><input type="checkbox" data-u="hideF"${S.ui.hideF?' checked':''}> Hide future days</label></div>
+  <div class="nrow" style="margin-top:8px"><label>Clock text<input data-u="time" value="${esc(S.ui.time)}"></label><label>Battery %<input type="number" min="1" max="100" inputmode="numeric" data-u="bat" value="${S.ui.bat}"></label><span></span></div>
+  <h3>${rangeTxt(v)}: minutes per day</h3>
+  <table class="grid"><tr><th></th>${SHORT.map(n=>`<th>${n}</th>`).join('')}</tr>
+  ${DN.map((n,i)=>`<tr><th>${n.slice(0,3)}</th>${CATS.map((c,k)=>`<td><input type="number" min="0" inputmode="numeric" aria-label="${n} ${c[0]} minutes" data-d="${i}" data-k="${k}" value="${W.days[i][k]}"></td>`).join('')}</tr>`).join('')}</table>
+  <h3>Most used apps (minutes for the week)</h3>
+  ${W.apps.map((a,i)=>`<div class="arow"><input aria-label="App name" data-a="${i}" data-f="n" value="${esc(a.n)}"><input type="number" min="0" inputmode="numeric" aria-label="Minutes" data-a="${i}" data-f="m" value="${a.m}"><select aria-label="Category" data-a="${i}" data-f="c">${CATS.map((c,k)=>`<option value="${k}"${a.c===k?' selected':''}>${c[0]}</option>`).join('')}</select></div>`).join('')}
+  <h3>Daily averages</h3>
+  <div class="nrow"><label>Pickups<input type="number" min="0" inputmode="numeric" data-n="pk" value="${W.pk}"></label><label>Notifications<input type="number" min="0" inputmode="numeric" data-n="nt" value="${W.nt}"></label>${v===1?`<label>% vs week before<input type="number" inputmode="numeric" data-n="delta" value="${W.delta==null?0:W.delta}"></label>`:'<span></span>'}</div>
+  <div class="btns"><button class="pill" data-act="copy">Copy last week into this week</button><button class="pill" data-act="nudge">Nudge numbers</button><button class="pill" data-act="reset">Reset sample data</button><button class="pill" data-act="code">Show the code</button></div>
+  <p class="note">Clean view hides these controls so you can screenshot the screen. Double-click or double-tap the “Screen Time” title to bring them back. Changes are saved in this browser.</p>`}
+
+$('ctl').addEventListener('input',e=>{const t=e.target,W=S.weeks[v];
+  if(t.dataset.d!==undefined)W.days[t.dataset.d][t.dataset.k]=Math.max(0,+t.value||0);
+  else if(t.dataset.a!==undefined){const a=W.apps[t.dataset.a],f=t.dataset.f;a[f]=f==='n'?t.value:f==='c'?+t.value:Math.max(0,+t.value||0)}
+  else if(t.dataset.n)W[t.dataset.n]=+t.value||0;
+  else if(t.dataset.u){const k=t.dataset.u;S.ui[k]=t.type==='checkbox'?t.checked:k==='bat'?Math.max(1,Math.min(100,+t.value||1)):t.value;applyUI()}
+  else return;
+  save();render()});
+$('ctl').addEventListener('change',e=>{if(e.target.id==='ed'){editOn=e.target.checked;svg.classList.toggle('edit',editOn)}});
+$('ctl').addEventListener('click',e=>{const a=e.target.dataset.act;if(!a)return;
+  if(a==='clean')document.body.classList.add('clean');
+  if(a==='code')showCode();
+  if(a==='copy'){S.weeks[0]=JSON.parse(JSON.stringify(S.weeks[1]));S.weeks[0].delta=null;v=0;sel=-1}
+  if(a==='nudge')S.weeks[v].days=S.weeks[v].days.map(d=>d.map(m=>Math.round(m*(.9+Math.random()*.2))));
+  if(a==='reset'){S=DEF();v=0;sel=-1}
+  save();buildCtl();render()});
+
+applyUI();if(SA)document.body.classList.add('clean','sa');
+buildCtl();render();
+</script>
+</body>
+</html>
