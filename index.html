@@ -120,7 +120,7 @@ const SHORT=['Social','Entert.','Produc.','Other'];
 const DN=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],DL=['M','T','W','T','F','S','S'];
 const DEF=()=>({weeks:[
 {days:[[70,50,35,25],[15,10,10,5],[65,55,35,25],[14,9,8,4],[18,14,8,5],[22,20,10,8],[18,15,8,6]],
- apps:[{n:'Instagram',m:130,c:0},{n:'YouTube',m:100,c:1},{n:'Claude',m:75,c:2},{n:'Snapchat',m:60,c:0},{n:'',m:55,c:1}],pk:78,nt:142,delta:null},
+ apps:[{n:'Snapchat',m:130,c:0},{n:'YouTube',m:100,c:1},{n:'Claude',m:75,c:2},{n:'Minecraft',m:60,c:0},{n:'Instagram',m:55,c:1}],pk:78,nt:142,delta:null},
 {days:[[110,80,60,40],[95,70,85,35],[130,90,70,45],[100,65,90,40],[120,100,55,50],[160,140,40,60],[180,150,30,55]],
  apps:[{n:'Claude',m:760,c:0},{n:'Minecraft',m:610,c:1},{n:'Youtube',m:380,c:2},{n:'Snapchat',m:350,c:0},{n:'Spotify',m:320,c:1}],pk:85,nt:160,delta:6}
 ]});
@@ -133,7 +133,7 @@ const tod=()=>(new Date().getDay()+6)%7,lastIdx=()=>S.ui.hideF?tod():6,nd=()=>v=
 const rnd=x=>{x=Math.sin(x*12.9898)*43758.5453;return x-Math.floor(x)},g=(h,c,s)=>Math.exp(-((h-c)**2)/(2*s*s));
 const PROF=[h=>.5*g(h,8,1.5)+.4*g(h,13,2)+g(h,21,2.2),h=>.3*g(h,12.5,1.5)+g(h,21.5,2.4),h=>g(h,10.5,2)+.9*g(h,15,2.5),h=>.6*g(h,9,2)+.6*g(h,18,3)+.2];
 function hours(d,s){return CATS.map((_,k)=>{const w=Array.from({length:24},(_,h)=>PROF[k](h)*(.75+.5*rnd(s*97+k*31+h))),t=sum(w);return w.map(x=>d[k]*x/t)})}
-const svg=$('svg'),base=152,top=10,H=base-top,slot=296/7,bw=26;
+const svg=$('svg'),base=152,H=base-10,slot=296/7,bw=26;
 
 function monday(off){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7)-7*off);return d}
 function rangeTxt(off){const a=monday(off),b=new Date(a);b.setDate(b.getDate()+6);const mo=x=>x.toLocaleString('en-GB',{month:'long'});
