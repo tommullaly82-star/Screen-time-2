@@ -119,10 +119,10 @@ const CATS=[['Social','#0A84FF'],['Entertainment','#64D2FF'],['Productivity','#F
 const SHORT=['Social','Entert.','Produc.','Other'];
 const DN=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],DL=['M','T','W','T','F','S','S'];
 const DEF=()=>({weeks:[
-{days:[[105,75,70,38],[90,82,95,30],[125,85,66,42],[98,70,88,36],[115,95,58,48],[150,132,42,55],[170,145,35,52]],
- apps:[{n:'Instagram',m:700,c:0},{n:'YouTube',m:560,c:1},{n:'Safari',m:410,c:2},{n:'Messages',m:330,c:0},{n:'Netflix',m:290,c:1}],pk:78,nt:142,delta:null},
+{days:[[70,50,35,25],[15,10,10,5],[65,55,35,25],[14,9,8,4],[18,14,8,5],[22,20,10,8],[18,15,8,6]],
+ apps:[{n:'Instagram',m:130,c:0},{n:'YouTube',m:100,c:1},{n:'Claude',m:75,c:2},{n:'Snapchat',m:60,c:0},{n:'',m:55,c:1}],pk:78,nt:142,delta:null},
 {days:[[110,80,60,40],[95,70,85,35],[130,90,70,45],[100,65,90,40],[120,100,55,50],[160,140,40,60],[180,150,30,55]],
- apps:[{n:'Instagram',m:760,c:0},{n:'YouTube',m:610,c:1},{n:'Safari',m:380,c:2},{n:'Messages',m:350,c:0},{n:'Netflix',m:320,c:1}],pk:85,nt:160,delta:6}
+ apps:[{n:'Claude',m:760,c:0},{n:'Minecraft',m:610,c:1},{n:'Youtube',m:380,c:2},{n:'Snapchat',m:350,c:0},{n:'Spotify',m:320,c:1}],pk:85,nt:160,delta:6}
 ]});
 function load(){try{const j=JSON.parse(localStorage.getItem('stui'));if(j&&j.weeks&&j.weeks.length===2&&j.weeks[0].days.length===7)return j}catch(e){}return null}
 function save(){try{localStorage.setItem('stui',JSON.stringify(S))}catch(e){}}
